@@ -4,7 +4,7 @@ from posts.models import Comment, Group, Post
 from .serializers import CommentSerializer, GroupSerializer, PostSerializer
 
 
-class IsAuthorOrReadOnly(permissions.BasePermission):
+class IsAuthorOrReadOnly(permissions.IsAuthenticated):
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
